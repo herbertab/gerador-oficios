@@ -20,7 +20,8 @@ USUARIOS = {
 def log_acesso_google_sheets(usuario):
     try:
         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-        creds = ServiceAccountCredentials.from_json_keyfile_name("credenciais.json", scope)
+        #creds = ServiceAccountCredentials.from_json_keyfile_name("credenciais.json", scope)
+        creds = ServiceAccountCredentials.from_json_keyfile_name("/etc/secrets/credenciais.json", scope)
         client = gspread.authorize(creds)
         sheet = client.open("Log Acessos").worksheet("Acessos")
         agora = datetime.now().strftime("%d/%m/%Y %H:%M")
