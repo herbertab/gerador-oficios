@@ -2,3 +2,5 @@ streamlit
 openai
 python-docx
 babel
+gspread
+oauth2client
