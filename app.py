@@ -126,9 +126,8 @@ def preencher_docx(num_oficio, ano_oficio, assunto, dt_envio, parag1, parag2, pa
     
     # Gera o nome do arquivo sem caracteres especiais
     nome_arquivo = f"Vereador Professor Juliano Lopes_N° {num_oficio}-{ano_oficio}_{assunto.replace(' ', '-').replace('/', '_')}.docx"
-    caminho_arquivo = f"/tmp/{nome_arquivo}"
-    doc.save(caminho_arquivo)
-    return caminho_arquivo
+    doc.save(nome_arquivo)
+    return nome_arquivo
 
 # Função para converter a data para o formato por extenso
 def formatar_data_por_extenso(data):
