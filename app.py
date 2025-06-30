@@ -106,7 +106,7 @@ def gera_oficio(demanda, client):
 
 # Função para substituir marcadores de posição no arquivo DOCX
 def preencher_docx(num_oficio, ano_oficio, assunto, dt_envio, parag1, parag2, parag3):
-    doc = Document("/etc/secrets/layout_oficio.docx")
+    doc = Document("layout_oficio.docx")
     for p in doc.paragraphs:
         if "{{Num/Ano}}" in p.text:
             p.text = p.text.replace("{{Num/Ano}}", f"{num_oficio}-{ano_oficio}")
