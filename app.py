@@ -106,6 +106,9 @@ def gera_oficio(demanda, client):
 
 # Função para substituir marcadores de posição no arquivo DOCX
 def preencher_docx(num_oficio, ano_oficio, assunto, dt_envio, parag1, parag2, parag3):
+    if not os.path.exists("layout_oficio.docx"):
+        st.error("Arquivo layout_oficio.docx não encontrado.")
+        st.stop()
     doc = Document("layout_oficio.docx")
     for p in doc.paragraphs:
         if "{{Num/Ano}}" in p.text:
