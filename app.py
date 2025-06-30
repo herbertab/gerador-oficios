@@ -13,8 +13,8 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 USUARIOS = {
-    "juliano": "senha123",
-    "admin": "oficio456"
+    "herbert": "12345",
+    "katia": "12345"
 }
 
 def log_acesso_google_sheets(usuario):
@@ -74,7 +74,6 @@ def gera_oficio(demanda, client):
             - O texto deve ter um parágrafo apresentando a demanda,
                um segundo parágrafo explicando os detalhes e
                um terceiro parágrafo concluindo o pedido.
-            - Se não houver CEP no resumo, tente consultar sua base para localizar e incluir o CEP no endereço da demanda.
             - Os parágrafos devem estar separados por quebra de linha dupla e é obrigatório que haja 3 parágrafos no resultado.
             - O texto deve terminar com a expressão: ... Por oportuno, agradeço a atenção despendida e renovo meus votos de estima e consideração.
             - O texto deve estar em português.            
@@ -107,7 +106,7 @@ def gera_oficio(demanda, client):
 
 # Função para substituir marcadores de posição no arquivo DOCX
 def preencher_docx(num_oficio, ano_oficio, assunto, dt_envio, parag1, parag2, parag3):
-    doc = Document("layout_oficio.docx")
+    doc = Document("/etc/secrets/layout_oficio.docx")
     for p in doc.paragraphs:
         if "{{Num/Ano}}" in p.text:
             p.text = p.text.replace("{{Num/Ano}}", f"{num_oficio}-{ano_oficio}")
